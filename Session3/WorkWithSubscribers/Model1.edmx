@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище TeleconNevaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Subs">
+          <Key>
+            <PropertyRef Name="Номер абонента" />
+          </Key>
+          <Property Name="Номер абонента" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ФИО" Type="nvarchar" MaxLength="255" />
+          <Property Name="Пол" Type="nvarchar" MaxLength="255" />
+          <Property Name="Дата рождения" Type="nvarchar" MaxLength="255" />
+          <Property Name="Номер телефона" Type="nvarchar" MaxLength="255" />
+          <Property Name="Электронная почта" Type="nvarchar" MaxLength="255" />
+          <Property Name="Адрес прописки" Type="nvarchar" MaxLength="255" />
+          <Property Name="Адрес проживания" Type="nvarchar" MaxLength="255" />
+          <Property Name="Серия и номер паспорта" Type="nvarchar" MaxLength="255" />
+          <Property Name="Код подразделения" Type="nvarchar" MaxLength="255" />
+          <Property Name="Кем выдан" Type="nvarchar" MaxLength="255" />
+          <Property Name="Дата выдачи паспорта" Type="nvarchar" MaxLength="255" />
+          <Property Name="Номер договора" Type="nvarchar" MaxLength="255" />
+          <Property Name="Дата заключения договора" Type="datetime" />
+          <Property Name="Тип договора" Type="nvarchar" MaxLength="255" />
+          <Property Name="Причина расторжения договора" Type="nvarchar" MaxLength="255" />
+          <Property Name="Лицевой счет" Type="float" />
+          <Property Name="Услуги" Type="nvarchar" MaxLength="255" />
+          <Property Name="Услуги1" Type="nvarchar" MaxLength="255" />
+          <Property Name="Услуги2" Type="nvarchar" MaxLength="255" />
+          <Property Name="Дата расторжения договора" Type="datetime" />
+          <Property Name="F22" Type="nvarchar" MaxLength="255" />
+          <Property Name="Серийный номер оборудования " Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Фамилия" Type="nvarchar" MaxLength="50" />
+          <Property Name="Имя" Type="nvarchar" MaxLength="50" />
+          <Property Name="Отчество" Type="nvarchar" MaxLength="50" />
+          <Property Name="Пол" Type="char" MaxLength="1" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Роль" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Номер" Type="int" Nullable="false" />
+          <Property Name="Пароль" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Фото" Type="image" />
+        </EntityType>
+        <EntityContainer Name="Хранилище TeleconNevaModelContainer">
+          <EntitySet Name="Subs" EntityType="Self.Subs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TeleconNevaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Sub">
+          <Key>
+            <PropertyRef Name="Номер_абонента" />
+          </Key>
+          <Property Name="Номер_абонента" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ФИО" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Пол" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Дата_рождения" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Номер_телефона" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Электронная_почта" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Адрес_прописки" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Адрес_проживания" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Серия_и_номер_паспорта" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Код_подразделения" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Кем_выдан" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Дата_выдачи_паспорта" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Номер_договора" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Дата_заключения_договора" Type="DateTime" Precision="3" />
+          <Property Name="Тип_договора" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Причина_расторжения_договора" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Лицевой_счет" Type="Double" />
+          <Property Name="Услуги" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Услуги1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Услуги2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Дата_расторжения_договора" Type="DateTime" Precision="3" />
+          <Property Name="F22" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Серийный_номер_оборудования_" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Пол" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Роль" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Номер" Type="Int32" Nullable="false" />
+          <Property Name="Пароль" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Фото" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityContainer Name="TeleconNevaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Subs" EntityType="Self.Sub" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище TeleconNevaModelContainer" CdmEntityContainer="TeleconNevaEntities">
+          <EntitySetMapping Name="Subs">
+            <EntityTypeMapping TypeName="TeleconNevaModel.Sub">
+              <MappingFragment StoreEntitySet="Subs">
+                <ScalarProperty Name="Номер_абонента" ColumnName="Номер абонента" />
+                <ScalarProperty Name="ФИО" ColumnName="ФИО" />
+                <ScalarProperty Name="Пол" ColumnName="Пол" />
+                <ScalarProperty Name="Дата_рождения" ColumnName="Дата рождения" />
+                <ScalarProperty Name="Номер_телефона" ColumnName="Номер телефона" />
+                <ScalarProperty Name="Электронная_почта" ColumnName="Электронная почта" />
+                <ScalarProperty Name="Адрес_прописки" ColumnName="Адрес прописки" />
+                <ScalarProperty Name="Адрес_проживания" ColumnName="Адрес проживания" />
+                <ScalarProperty Name="Серия_и_номер_паспорта" ColumnName="Серия и номер паспорта" />
+                <ScalarProperty Name="Код_подразделения" ColumnName="Код подразделения" />
+                <ScalarProperty Name="Кем_выдан" ColumnName="Кем выдан" />
+                <ScalarProperty Name="Дата_выдачи_паспорта" ColumnName="Дата выдачи паспорта" />
+                <ScalarProperty Name="Номер_договора" ColumnName="Номер договора" />
+                <ScalarProperty Name="Дата_заключения_договора" ColumnName="Дата заключения договора" />
+                <ScalarProperty Name="Тип_договора" ColumnName="Тип договора" />
+                <ScalarProperty Name="Причина_расторжения_договора" ColumnName="Причина расторжения договора" />
+                <ScalarProperty Name="Лицевой_счет" ColumnName="Лицевой счет" />
+                <ScalarProperty Name="Услуги" ColumnName="Услуги" />
+                <ScalarProperty Name="Услуги1" ColumnName="Услуги1" />
+                <ScalarProperty Name="Услуги2" ColumnName="Услуги2" />
+                <ScalarProperty Name="Дата_расторжения_договора" ColumnName="Дата расторжения договора" />
+                <ScalarProperty Name="F22" ColumnName="F22" />
+                <ScalarProperty Name="Серийный_номер_оборудования_" ColumnName="Серийный номер оборудования " />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="TeleconNevaModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+                <ScalarProperty Name="Имя" ColumnName="Имя" />
+                <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+                <ScalarProperty Name="Пол" ColumnName="Пол" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Роль" ColumnName="Роль" />
+                <ScalarProperty Name="Номер" ColumnName="Номер" />
+                <ScalarProperty Name="Пароль" ColumnName="Пароль" />
+                <ScalarProperty Name="Фото" ColumnName="Фото" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
