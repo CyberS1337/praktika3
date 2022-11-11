@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище NevaTelecomModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Connections">
+    <Key>
+      <PropertyRef Name="ConnectionID" />
+    </Key>
+    <Property Name="ConnectionID" Type="int" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="RateID" Type="int" Nullable="false" />
+    <Property Name="AddressSetup" Type="varchar" MaxLength="100" />
+    <Property Name="PlaceSetup" Type="varchar" MaxLength="100" />
+    <Property Name="ConnectionPoint" Type="varchar" MaxLength="100" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Hardware">
+    <Key>
+      <PropertyRef Name="HardwareID" />
+    </Key>
+    <Property Name="HardwareID" Type="int" Nullable="false" />
+    <Property Name="HardwareName" Type="varchar" MaxLength="100" />
+    <Property Name="MACAddress" Type="varchar" MaxLength="100" />
+    <Property Name="IPAddress" Type="varchar" MaxLength="100" />
+    <Property Name="Type" Type="varchar" MaxLength="100" />
+    <Property Name="SerialNumber" Type="int" />
+  </EntityType>
+  <EntityType Name="Rates">
+    <Key>
+      <PropertyRef Name="RateID" />
+    </Key>
+    <Property Name="RateID" Type="int" Nullable="false" />
+    <Property Name="HardwareID" Type="int" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="RateName" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="Surname" Type="varchar" MaxLength="100" />
+    <Property Name="Patronymic" Type="varchar" MaxLength="50" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Number" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="20" />
+    <Property Name="Role" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Connections_Rates">
+    <End Role="Rates" Type="Self.Rates" Multiplicity="1" />
+    <End Role="Connections" Type="Self.Connections" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rates">
+        <PropertyRef Name="RateID" />
+      </Principal>
+      <Dependent Role="Connections">
+        <PropertyRef Name="RateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Connections_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Connections" Type="Self.Connections" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="Connections">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rates_Hardware">
+    <End Role="Hardware" Type="Self.Hardware" Multiplicity="1" />
+    <End Role="Rates" Type="Self.Rates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Hardware">
+        <PropertyRef Name="HardwareID" />
+      </Principal>
+      <Dependent Role="Rates">
+        <PropertyRef Name="HardwareID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище NevaTelecomModelContainer">
+    <EntitySet Name="Connections" EntityType="Self.Connections" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Hardware" EntityType="Self.Hardware" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rates" EntityType="Self.Rates" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Connections_Rates" Association="Self.FK_Connections_Rates">
+      <End Role="Rates" EntitySet="Rates" />
+      <End Role="Connections" EntitySet="Connections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Connections_User" Association="Self.FK_Connections_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Connections" EntitySet="Connections" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rates_Hardware" Association="Self.FK_Rates_Hardware">
+      <End Role="Hardware" EntitySet="Hardware" />
+      <End Role="Rates" EntitySet="Rates" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

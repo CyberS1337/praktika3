@@ -1,0 +1,26 @@
+﻿<Page x:Class="Sessia1.Autorizacia"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Sessia1"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Authorization" Background="White">
+
+    <Grid>
+        <TextBlock FontSize="20" Margin="-400,-180,0,0" VerticalAlignment="Center" HorizontalAlignment="Center">Номер</TextBlock>
+        <TextBlock FontSize="20" Margin="-400,-90,0,0" VerticalAlignment="Center" HorizontalAlignment="Center">Пароль</TextBlock>
+        <TextBlock FontSize="20" Margin="-400,0,30,0" VerticalAlignment="Center" HorizontalAlignment="Center">Код</TextBlock>
+        <TextBox x:Name="Number" Width="250" Height="30" Margin="0,-180,0,0" BorderBrush="Black" VerticalAlignment="Center" HorizontalAlignment="Center" TextChanged="Number_TextChanged"/>
+        <TextBox x:Name="Password" Height="30" Width="250" Margin="0,-90,0,0" IsEnabled="False" BorderBrush="Black" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <TextBox x:Name="Code" Height="30" Width="200" Margin="0,0,50,0" IsEnabled="False" BorderBrush="Black" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Button x:Name="NewCode" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,-200,0" Width="30" RenderTransformOrigin="0.433,-0.059" Height="26" Click="Update_Click">
+            <Image Source="/Resources/update.jpg"/>
+        </Button>
+
+        <Button x:Name="Cancel" Content="Отмена" Height="20" Width="60"  VerticalAlignment="Center" HorizontalAlignment="Center"  Margin="0,90,50,0" Click="Cancel_Click"/>
+        <Button x:Name="SignIn" Content="Вход" Height="20" Width="60" IsEnabled="False" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,90,-100,0" Click="SignIn_Click"/>
+
+    </Grid>
+</Page>
